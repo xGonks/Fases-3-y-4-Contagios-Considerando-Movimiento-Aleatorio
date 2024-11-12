@@ -25,7 +25,7 @@ D = int(input("Diametro = "))
 N = int(input("No. de personas = "))
 
 
-R = 0
+R = 1
 I = 1
 S = N - I - R
 
@@ -68,14 +68,19 @@ print(df)
 print(df.info())
 
 
+# Parametrizar el circulo para graficarlo
 theta = np.linspace(0, 2 * np.pi, 100)
 circle_x = (D / 2) * np.cos(theta)
 circle_y = (D / 2) * np.sin(theta)
 # Crear la gráfica
 plt.figure(figsize=(8, 8))
 plt.plot(circle_x, circle_y, color="blue", label="(x^2) + (y^2) = (D/2)^2")
-plt.scatter(posicion_x, posicion_y, color="black",
-            s=10, label="Puntos (personas)")
+# Asignar colores según el estado
+colores = {'Suceptible': 'black', 'Infectado': 'red', 'Recuperado': 'blue'}
+for estado, color in colores.items():
+    plt.scatter(df[df['estado'] == estado]['posición x'],
+                df[df['estado'] == estado]['posición y'],
+                color=color, s=10, label=f"{estado}", zorder=3)
 plt.axhline(0, color='gray', linewidth=0.5)
 plt.axvline(0, color='gray', linewidth=0.5)
 plt.scatter(cluster_x, cluster_y, color="green",
