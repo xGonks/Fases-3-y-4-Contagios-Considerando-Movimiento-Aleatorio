@@ -1,4 +1,4 @@
-""" Solución Problema 4"""
+""" Solución Problema 3"""
 
 import math
 import random
