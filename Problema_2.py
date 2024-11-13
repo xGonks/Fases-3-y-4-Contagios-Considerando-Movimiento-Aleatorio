@@ -23,6 +23,7 @@ ids = list(range(1, N + 1))  # Identificadores únicos
 iteraciones = [0] * N  # Iteración inicial para todas las personas
 
 # posiciones iniciales para cada persona
+'''Para generar las posiciones iniciales aleatoreas de cada persona se genera un ángulo aleatorio para determinar su dirección en el círculo, calculamos una distacia radial para garantizar que la persona esté dentro del círculo con un radio máximo de D/2, convierte las coordenadas polares a cartesianas con las fórmulas de coseno y seno para que se agreguen las coordenadas x e y a las listas para representar las posiciones de todas las personas'''
 for _ in range(N):
     a = random.random() * 2 * math.pi  # Ángulo aleatorio en radianes
     r = (D / 2) * math.sqrt(random.random())  # Distancia radial
